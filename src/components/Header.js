@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => {
     return (
-        <div className="grid grid-cols-12 grid-cols-4 shadow py-3">
+        <div className="grid grid-cols-12 shadow py-3">
             <div className="flex items-center cursor-pointer col-span-2">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 mx-4" viewBox="0 0 24 24"
                     focusable="false">

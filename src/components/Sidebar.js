@@ -1,16 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
     return (
         <div className="col-span-2 shadow px-1 h-[720px] max-h-[920px] overflow-y-scroll pb-8">
             <div>
                 <ul>
-                    <li className="flex items-center cursor-pointer">
-                        <svg className="h-6 mx-4 my-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false"><g>
-                            <path d="M4 21V10.08l8-6.96 8 6.96V21h-6v-6h-4v6H4z"></path></g>
-                        </svg>
-                        <span className="font-bold">Home</span>
-                    </li>
+                    <Link to={"/"}>
+                        <li className="flex items-center cursor-pointer">
+                            <svg className="h-6 mx-4 my-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false"><g>
+                                <path d="M4 21V10.08l8-6.96 8 6.96V21h-6v-6h-4v6H4z"></path></g>
+                            </svg>
+                            <span className="font-bold">Home</span>
+                        </li>
+                    </Link>
                     <li className="flex items-center cursor-pointer">
                         <svg className="h-6 mx-4 my-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  focusable="false">
                             <path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zm-.23 

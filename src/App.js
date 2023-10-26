@@ -1,9 +1,11 @@
 import './App.css';
-import Header from './components/Header';
 import Body from './components/Body';
 import MainContainer from './components/MainContainer';
 import WatchVideos from './components/WatchVideos';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Provider } from "react-redux";
+import appStore from "./store/store";
+
 
 const appRoutes = createBrowserRouter([
   {
@@ -20,15 +22,16 @@ const appRoutes = createBrowserRouter([
       }
     ]
   }
-])
+]);
 
 function App() {
   return (
     <div>
-       <Header />
-       <RouterProvider router={appRoutes}>
-        <Body />
-       </RouterProvider>
+      <Provider store={appStore}>
+          <RouterProvider router={appRoutes}>
+            <Body />
+          </RouterProvider>
+      </Provider>
     </div>
   );
 }

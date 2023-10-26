@@ -1,14 +1,20 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { toggle } from "../store/appSlice";
 
 const Header = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     return (
         <div className="grid grid-cols-12 shadow py-3">
             <div className="flex items-center cursor-pointer col-span-2">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 mx-4" viewBox="0 0 24 24"
+                <svg onClick={() => dispatch(toggle())} xmlns="http://www.w3.org/2000/svg" className="h-8 mx-4" viewBox="0 0 24 24"
                     focusable="false">
                     <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"></path>
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8" viewBox="0 0 90 20" focusable="false">
+                <svg onClick={() => navigate("/")} xmlns="http://www.w3.org/2000/svg" className="h-8" viewBox="0 0 90 20" focusable="false">
                     <svg viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
                         <g>
                             <path d="M27.9727 3.12324C27.6435 1.89323 26.6768 0.926623 25.4468 0.597366C23.2197 2.24288e-07 14.285 0 14.285 0C14.285 0 5.35042 2.24288e-07 3.12323 0.597366C1.89323 0.926623 0.926623 1.89323 0.597366 3.12324C2.24288e-07 5.35042 0 10 0 10C0 10 2.24288e-07 14.6496 0.597366 16.8768C0.926623 18.1068 1.89323 19.0734 3.12323 19.4026C5.35042 20 14.285 20 14.285 20C14.285 20 23.2197 20 25.4468 19.4026C26.6768 19.0734 27.6435 18.1068 27.9727 16.8768C28.5701 14.6496 28.5701 10 28.5701 10C28.5701 10 28.5677 5.35042 27.9727 3.12324Z" fill="#FF0000"></path>

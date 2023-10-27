@@ -17,7 +17,7 @@ const VideoContainer = () => {
         console.log("response ", getVideos);
     }
     return (
-        <div className="grid grid-cols-10 mt-10 pt-10">
+        <div className="grid grid-cols-10 pt-[88px]">
             {
                 videoInfo.length > 0 && videoInfo.map((video) => <VideoCards key={video.id} info={video} />)
             }

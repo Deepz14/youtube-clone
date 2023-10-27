@@ -2,14 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-::-webkit-scrollbar {
-    display: none;
-}
-  
-::-webkit-scrollbar-button {
-    display: none;
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-body {
-    -ms-overflow-style:none;
+.header-container{
+    position: sticky;
+    top: 0;
+}
+.sidebar-container{
+   overflow: hidden;
+}
+.sidebar-container:hover{
+    overflow-y: scroll;
+}
+
+.search-suggestion-card{
+    position: absolute;
+    height: 490px;
+    width: 690px;
+    top: 60px;
+    left: 150px;
 }

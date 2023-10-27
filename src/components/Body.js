@@ -16,7 +16,7 @@ const Body = () => {
     return (
         <>
             <Header />
-            <div className="grid grid-cols-12">
+            <div>
                 {
                     isNavOpen &&  <Sidebar />
                 }

@@ -4,7 +4,7 @@ import ButtonFilter from "./ButtonFilter";
 
 const ButtonList = () => {
     return (
-        <div className="fixed bg-white w-full pt-3 top-[5.286rem]">
+        <div className="fixed bg-white w-full pt-3 z-1">
             {
                 BUTTON_FILTER_LIST.map((button, i) => <ButtonFilter key={i} name={button} />)
             }

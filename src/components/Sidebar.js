@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
     return (
-        <div className="col-span-2 shadow px-1 h-[720px] max-h-[920px] overflow-y-scroll pb-8">
+        <div className="fixed left-0 shadow px-1 mb-3 h-full pb-8 sidebar-container bg-white w-[270px] -z-1">
             <div>
                 <ul>
                     <Link to={"/"}>

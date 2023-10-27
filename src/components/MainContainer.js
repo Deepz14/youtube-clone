@@ -6,7 +6,7 @@ import VideoContainer from "./VideoContainer";
 const MainContainer = () => {
 
     return  (
-        <div className="col-span-10 px-5 max-h-[700px] overflow-y-scroll relative">
+        <div className="px-5 ml-[270px]">
             <ButtonList />
             <VideoContainer />
         </div>

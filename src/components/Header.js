@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggle } from "../store/appSlice";
+import { cacheSearch, releaseTopCache } from "../store/searchSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/Constants";
 
 const Header = () => {
@@ -10,15 +11,34 @@ const Header = () => {
     const [searchQueryList, setSearchQueryList] = useState([]);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const searchCache = useSelector((state) => state.searchReducer);
 
     useEffect(() => {
-        getSearchSuggestion();
+       const searchTimer = setTimeout(() => {
+            if(searchCache[searchQuery]){
+                setSearchQueryList(searchCache[searchQuery])
+            }else{
+                getSearchSuggestion();
+            }
+        }, 200);
+
+        return () => {
+            clearTimeout(searchTimer);
+        };
     }, [searchQuery]);
 
     const getSearchSuggestion = async() => {
         const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
         const result = await response.json();
         setSearchQueryList(result[1]);
+        dispatch(
+            cacheSearch({
+               [searchQuery] : result[1]
+            })
+        );
+        if(Object.keys(searchCache).length > 99){
+            dispatch(releaseTopCache());
+        }
     }
 
     return (

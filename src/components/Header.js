@@ -1,12 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toggle } from "../store/appSlice";
+import { YOUTUBE_SEARCH_API } from "../utils/Constants";
 
 const Header = () => {
     const [showSearchSuggesstion, setShowSearchSuggestion] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQueryList, setSearchQueryList] = useState([]);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        getSearchSuggestion();
+    }, [searchQuery]);
+
+    const getSearchSuggestion = async() => {
+        const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+        const result = await response.json();
+        setSearchQueryList(result[1]);
+    }
 
     return (
         <div className="grid grid-cols-12 shadow py-3 bg-white header-container z-10 relative">
@@ -39,6 +52,8 @@ const Header = () => {
                 <input className="border border-gray-300 w-2/3 pl-8 py-2 rounded-l-full" 
                     onFocus={() => setShowSearchSuggestion(true)}
                     onBlur={() => setShowSearchSuggestion(false)}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search" type="search" />
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-11 bg-slate-200 px-5 py-2 rounded-r-full" enableBackground="new 0 0 24 24" viewBox="0 0 24 24" focusable="false">
                     <path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 
@@ -46,50 +61,21 @@ const Header = () => {
                     6-6 6z"></path>
                 </svg>
                 {
-                    showSearchSuggesstion && 
+                    showSearchSuggesstion && searchQueryList.length > 0 &&
                     <div className="border border-gray-400 search-suggestion-card bg-white rounded-xl">
                         <ul className="py-2">
-                            <li className="py-3 flex items-center hover:bg-gray-200">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 mr-3 pl-5" enableBackground="new 0 0 24 24" viewBox="0 0 24 24" focusable="false">
-                                    <path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 
-                                    3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 
-                                    6-6 6z"></path>
-                                </svg>
-                            <span className="ml-3 text-bold text-lg">iphone</span> 
-                            </li>
-                            <li className="py-3 flex items-center hover:bg-gray-200">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 mr-3 pl-5" enableBackground="new 0 0 24 24" viewBox="0 0 24 24" focusable="false">
-                                    <path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 
-                                    3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 
-                                    6-6 6z"></path>
-                                </svg>
-                            <span className="ml-3 text-bold text-lg">iphone</span> 
-                            </li>
-                            <li className="py-3 flex items-center hover:bg-gray-200">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 mr-3 pl-5" enableBackground="new 0 0 24 24" viewBox="0 0 24 24" focusable="false">
-                                    <path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 
-                                    3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 
-                                    6-6 6z"></path>
-                                </svg>
-                            <span className="ml-3 text-bold text-lg">iphone</span> 
-                            </li>
-                            <li className="py-3 flex items-center hover:bg-gray-200">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 mr-3 pl-5" enableBackground="new 0 0 24 24" viewBox="0 0 24 24" focusable="false">
-                                    <path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 
-                                    3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 
-                                    6-6 6z"></path>
-                                </svg>
-                            <span className="ml-3 text-bold text-lg">iphone</span> 
-                            </li>
-                            <li className="py-3 flex items-center hover:bg-gray-200">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 mr-3 pl-5" enableBackground="new 0 0 24 24" viewBox="0 0 24 24" focusable="false">
-                                    <path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 
-                                    3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 
-                                    6-6 6z"></path>
-                                </svg>
-                            <span className="ml-3 text-bold text-lg">iphone</span> 
-                            </li>
-
+                            {
+                                searchQueryList.map((result) => 
+                                    <li key={result} className="py-3 flex items-center hover:bg-gray-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 mr-3 pl-5" enableBackground="new 0 0 24 24" viewBox="0 0 24 24" focusable="false">
+                                            <path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 
+                                            3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 
+                                            6-6 6z"></path>
+                                        </svg>
+                                        <span className="ml-3 text-bold text-lg">{result}</span> 
+                                    </li>
+                                )
+                            }
                         </ul>
                     </div>
                 }

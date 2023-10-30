@@ -69,7 +69,7 @@ const Header = () => {
                 </svg>
             </div>
             <div className="search-section col-span-8 py-2 flex justify-center relative">
-                <input className="border border-gray-300 w-2/3 pl-8 py-2 rounded-l-full" 
+                <input className="border border-gray-300 w-3/5 pl-8 py-2 rounded-l-full" 
                     onFocus={() => setShowSearchSuggestion(true)}
                     onBlur={() => setShowSearchSuggestion(false)}
                     value={searchQuery}

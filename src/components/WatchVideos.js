@@ -20,7 +20,7 @@ const WatchVideos = () => {
 
     return (
         <div className="ml-8 pl-8 my-3">
-           <iframe width="1120" height="560" 
+           <iframe width="1080" height="550" 
            className="rounded-md shadow"
            src={"https://www.youtube.com/embed/" + videoID.get("v")} 
            title="YouTube video player" frameBorder="0" 

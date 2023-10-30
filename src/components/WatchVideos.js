@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { open, close } from "../store/appSlice";
+import WatchVideoInfo from "./WatchVideoInfo";
 
 const WatchVideos = () => {
 
@@ -25,6 +26,7 @@ const WatchVideos = () => {
            title="YouTube video player" frameBorder="0" 
            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
            autoPlay allowFullScreen></iframe>
+           <WatchVideoInfo vId={videoID.get("v")} />
         </div>
     )
 }
